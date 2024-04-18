@@ -28,24 +28,13 @@ const Products = () => {
     const Loading = () => {
         return (
             <>
-             <div className='col-md-3'>
-                <Skeleton height={350}/>
-            </div>
-            <div className='col-md-3'>
-                <Skeleton height={350}/>
-            </div>
-            <div className='col-md-3'>
-                <Skeleton height={350}/>
-            </div>
-            <div className='col-md-3'>
-                <Skeleton height={350}/>
-            </div>
+             Loading...
             </>
         )
     }
 
     const filterProduct = (cat) => {
-        const updatedList = data.filter((x)=>x.category === cat);
+        const updatedList = data.filter ((x)=>x.category === cat);
         setFilter(updatedList);
     }
     const ShowProducts = () => {
@@ -67,7 +56,7 @@ const Products = () => {
                                         <div class="card-body">
                                             <h5 class="card-title mb-0">{product.title.substring(0,12)}...</h5>
                                             <p class="card-text lead fw-bold">£{product.price}</p>
-                                            <a href="#" class="btn btn-outline-dark">Buy Now</a>
+                                            
                                         </div>
                                 </div>
                             </div>

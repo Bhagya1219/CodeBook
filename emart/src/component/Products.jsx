@@ -28,7 +28,7 @@ const Products = () => {
     const Loading = () => {
         return (
             <>
-             Loading...
+               Loading...
             </>
         )
     }

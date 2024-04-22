@@ -1,0 +1,139 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Products API",
+      "version": "1.0.0",
+      "description": "An API for retrieving and filtering products data."
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3001",
+        "description": "Local development server"
+      }
+    ],
+    "tags": [
+      {
+        "name": "Products",
+        "description": "Operations related to managing products"
+      }
+    ],
+    "security": [
+      {
+        "apiKey": []
+      }
+    ],
+    "components": {
+      "schemas": {
+        "Product": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "description": "The unique identifier for the product."
+            },
+            "title": {
+              "type": "string",
+              "description": "The title of the product."
+            },
+            "image": {
+              "type": "string",
+              "description": "The URL of the product image."
+            },
+            "price": {
+              "type": "number",
+              "format": "double",
+              "description": "The price of the product."
+            },
+            "category": {
+              "type": "string",
+              "description": "The category of the product."
+            }
+          }
+        },
+        "ErrorResponse": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "type": "string",
+              "description": "A message describing the error."
+            }
+          }
+        }
+      }
+    },
+    "paths": {
+      "/products": {
+        "get": {
+          "summary": "Get Products Data",
+          "description": "Retrieves the list of products from the server.",
+          "tags": [
+            "Products"
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response with products data.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Product"
+                        }
+                      },
+                      "filter": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Product"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Not Supported",
+          "description": "The POST method is not supported for this endpoint.",
+          "responses": {
+            "405": {
+              "description": "Method Not Allowed",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  

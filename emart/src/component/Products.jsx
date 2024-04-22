@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
-import axios from 'axios'; 
+import axios from 'axios'; // Import axios
 
 const Products = () => {
     const [data, setData] = useState([]);

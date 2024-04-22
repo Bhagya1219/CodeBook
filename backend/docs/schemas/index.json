@@ -1,0 +1,87 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Product  API",
+    "version": "1.0.0"
+  },
+  "components": {
+    "schemas": {
+      "Product": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "image",
+          "price",
+          "category"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "category": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/product": {
+      "get": {
+        "summary": "Get Products Data",
+        "description": "Retrieves the list of products from the server.",
+        "tags": [
+          "Products"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with products data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "../schemas/index.json"
+                      }
+                    },
+                    "filter": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "../schemas/index.json"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      },
+      "post": {
+        "summary": "Not Supported",
+        "description": "The POST method is not supported for this endpoint.",
+        "responses": {
+          "405": {
+            "description": "Method Not Allowed"
+          }
+        }
+      }
+    }
+  }
+}

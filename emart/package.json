@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apidevtools/swagger-cli": "^4.0.4",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -22,7 +23,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "docs:debug": "swagger-cli validate -d docs/index.json",
+    "docs:generate": "swagger-cli bundle docs/index.json --outfile openapi.json"  
   },
   "eslintConfig": {
     "extends": [
